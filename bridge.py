@@ -1,15 +1,13 @@
 #!/usr/bin/env python3
 """
-Claude Code Slack Bridge v4
-レイアウト: claude-work セッション、mainウィンドウ(1)
-  左列  pane1=Projects[Orch] / pane2,3,4=Projects[Worker]
-  中列  pane5=外部資金応募   / pane7=sandbox
-  右列  pane6=講演依頼       / pane8=bridge自身（監視除外）
+cc-slack-bridge  —  Control Claude Code sessions remotely via Slack.
 
-追加機能:
-  - /cc sh <N> <cmd>  : ペインでシェルコマンド実行・結果返信
-  - /cc get <N> <file>: ペインのカレントディレクトリからSlackへファイル送信
-  - ファイル添付イベント: Slackに添付 → Mac Studioに転送
+Layout (default, edit PANE_LABELS and claude-layout.sh to match yours):
+  pane 1-4 : project1-4  [Orchestrator + Workers]  <- /cc start all target
+  pane 5-7 : extra1-3    [free use, manual start]
+  pane 8   : bridge.py   [this process, excluded from all commands]
+
+See README.md for full setup instructions.
 """
 
 import os, re, time, subprocess, threading, tempfile, json
